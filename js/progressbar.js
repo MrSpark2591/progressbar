@@ -1,10 +1,21 @@
 var progressBar = {  // Golbal configuration
 	    
 	    progressBarFunction : function() { // Ajax Progressbar
-                    if(progressBar.progressBarFlag){
-                       $('.progressbar-div')
-                        .animate({width:'100%'},1000)
-                        .animate({width:'0%'},0,progressBar.progressBarFunction);
+                       var elem = document.getElementsByClassName("progressbar");
+                       var width = 0;   
+                       var id = setInterval(frame,10);
+                       function frame() {
+                     if(progressBar.progressBarFlag){
+                        if (width == 100) {
+                            elem[0].style.width = '0%';
+                            width = 0; 
+                        } else {
+                            width = width + 0.5;
+                            elem[0].style.width = width+'%';
+                        }
+                      }else{
+                        elem[0].style.width = '0%';
+                      }
                     }
 			    },
         progressBarStart : function(){
