@@ -1,0 +1,13 @@
+.progressbar-div {
+  display: block;
+  text-align: center;
+  width: 0;
+  background: #FFD800;
+  position: absolute;
+  left: 0;
+  height: 5px;
+  z-index: 1000; 
+}
+body{
+	margin: 0px;
+}
