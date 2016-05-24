@@ -38,7 +38,7 @@ var progressBar = {  // Golbal configuration
         },
         progressBarStop : function(){ // stop function
             if(progressBar.inprogressFlag){
-                progressBar.fadeOut()
+                progressBar.fadeOut();
                 progressBar.progressBarFlag = false;
                 progressBar.inprogressFlag = false;   
             }
@@ -77,5 +77,5 @@ var progressBar = {  // Golbal configuration
         },
         progressBarFlag : false,// flage for progressbar
         inprogressFlag: false 
-}
+};
 progressBar.config({});
