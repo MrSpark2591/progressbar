@@ -1,8 +1,8 @@
 var progressBar = {  // Golbal configuration
-	    appConfig : {
+        appConfig : {
             pattern : 1, // 1 for stright line progressbar
             color : "#FFD800", //color of progressbar
-            intervalAnmation : 10, // ms interval
+            intervalAnmation : 20, // ms interval
             height:  5,
             zIndex: 1000// px height 
         },
@@ -14,24 +14,34 @@ var progressBar = {  // Golbal configuration
         },
         element : {},
         cssSetFunction : function(){
-            progressBar.element.setAttribute("style" , "position : absolute;");
-            progressBar.element.setAttribute("style" , "left: 0;");
+            progressBar.element.setAttribute("style" , "display: block;");
             progressBar.element.setAttribute("style" , "z-index:"+progressBar.appConfig.zIndex+";");
+            progressBar.element.style.width = "0%";
             progressBar.element.style.background = progressBar.appConfig.color;
             progressBar.element.style.height = progressBar.appConfig.height+ 'px';
-            progressBar.element.style.width = 0;
+            progressBar.element.style.position = "absolute";
+            progressBar.element.style.left = "0px";
         },
         progressBarFunction : function() { // Progressbar function 
-            if(progressBar.appConfig.pattern === 1){
+            if(progressBar.appConfig.pattern === 1 && !progressBar.inprogressFlag){
+                progressBar.inprogressFlag = true;
                 progressBar.progressBarFunctionPattern1();
             }     
-		},
+        },
         progressBarStart : function(){ // start function
-            progressBar.progressBarFlag = true;
-            progressBar.progressBarFunction();
+            if(!progressBar.inprogressFlag){
+                progressBar.progressBarFlag = true;
+                progressBar.element.style.width = '0%';
+                progressBar.element.style.opacity = 1;
+                progressBar.progressBarFunction();
+            }
         },
         progressBarStop : function(){ // stop function
-            progressBar.progressBarFlag = false;
+            if(progressBar.inprogressFlag){
+                progressBar.fadeOut()
+                progressBar.progressBarFlag = false;
+                progressBar.inprogressFlag = false;   
+            }
         },
         progressBarFunctionPattern1 : function(){
             var width = 0;   
@@ -46,21 +56,26 @@ var progressBar = {  // Golbal configuration
                         progressBar.element.style.width = width+'%';
                     }
                 }else{
-                    progressBar.element.style.width = '0%';
+                    progressBar.element.style.width = '100%';
+                    width = 0;
+                    clearInterval(id);
                 }
             }
         },
-        progressBarFlag : false // flage for progressbar
+        fadeOut : function(){
+            var op = 1;  // initial opacity
+            var timer = setInterval(function () {
+            if (op <= 0.1){
+               progressBar.element.style.opacity = 0; 
+              clearInterval(timer);
+            }else{
+                progressBar.element.style.opacity = op;
+                progressBar.element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }
+            }, 10);
+        },
+        progressBarFlag : false,// flage for progressbar
+        inprogressFlag: false 
 }
 progressBar.config({});
-var xyz = {
-    pattern : 1,
-    color : "#e52d27",
-    intervalAnmation : 5
-};
-progressBar.config(xyz);
-progressBar.progressBarStart();
-
-setTimeout(function(){
-    progressBar.progressBarStop();
-},5000);
