@@ -1,6 +1,9 @@
 # Progressbar(pure plain js !!!)
 progress bar plugin for general use pure javascript base so you can use it with any technology framework like angular,jquery,etc.
 
+# Demo:
+http://mrspark2591.github.io/progressbar/
+
 #How to use ? 
 
 Include 
