@@ -14,7 +14,10 @@ Put in html where you want progress bar to be placed.
 <div class="progressbar"></div>
 ```
 in your js file make one object for config and feed it to config to progressbar start working.(prfered when using jquery put it in start of document ready and for angular in init function and so on for other frameworks.)
-
+```javascript
+progressBar.config(appConfig);
+```
+ here appConfig is your custom object !
 #Defualt Configuration
 ```javascript
 appConfig : {
