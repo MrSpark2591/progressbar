@@ -1,5 +1,5 @@
 var progressBar = {  // Golbal configuration
-	    appConfig : {
+        appConfig : {
             pattern : 1, // 1 for stright line progressbar
             color : "#FFD800", //color of progressbar
             intervalAnmation : 20, // ms interval
@@ -27,7 +27,7 @@ var progressBar = {  // Golbal configuration
                 progressBar.inprogressFlag = true;
                 progressBar.progressBarFunctionPattern1();
             }     
-		},
+        },
         progressBarStart : function(){ // start function
             if(!progressBar.inprogressFlag){
                 progressBar.progressBarFlag = true;
