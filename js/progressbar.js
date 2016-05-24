@@ -3,7 +3,8 @@ var progressBar = {  // Golbal configuration
             pattern : 1, // 1 for stright line progressbar
             color : "#FFD800", //color of progressbar
             intervalAnmation : 10, // ms interval
-            height:  5// px height 
+            height:  5,
+            zIndex: 1000// px height 
         },
         config : function(configObject){
             progressBar.appConfig = Object.assign(progressBar.appConfig , configObject);
@@ -13,10 +14,9 @@ var progressBar = {  // Golbal configuration
         },
         element : {},
         cssSetFunction : function(){
-            progressBar.element.setAttribute("style" , "display : block;");
             progressBar.element.setAttribute("style" , "position : absolute;");
             progressBar.element.setAttribute("style" , "left: 0;");
-            progressBar.element.setAttribute("style" , "z-index: 1000;");
+            progressBar.element.setAttribute("style" , "z-index:"+progressBar.appConfig.zIndex+";");
             progressBar.element.style.background = progressBar.appConfig.color;
             progressBar.element.style.height = progressBar.appConfig.height+ 'px';
             progressBar.element.style.width = 0;
@@ -52,11 +52,10 @@ var progressBar = {  // Golbal configuration
         },
         progressBarFlag : false // flage for progressbar
 }
-
+progressBar.config({});
 var xyz = {
     pattern : 1,
     color : "#e52d27",
-    height : 10,
     intervalAnmation : 5
 };
 progressBar.config(xyz);
