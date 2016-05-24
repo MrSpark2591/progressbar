@@ -51,8 +51,24 @@ progressBar.progressBarStart();
 ```
 
 
-## Howw to stop progress?
+## How to stop progress?
 simple use following when you want to stop progress:
 ```javascript
 progressBar.progressBarStop(); 
+```
+
+
+# Special for jquery lovers and wants to show ajax progress by this plugin
+```javascript
+$( document ).ajaxStart(function() {
+     progressBar.progressBarStart(); 
+});
+
+$( document ).ajaxStop(function() {
+     progressBar.progressBarStop(); 
+});
+		   
+$( document ).ajaxError(function() {
+     progressBar.progressBarStop(); 
+});
 ```
