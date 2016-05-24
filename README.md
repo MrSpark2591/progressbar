@@ -1,11 +1,14 @@
 # Progressbar(pure plain js !!!)
 progress bar plugin for general use pure javascript base so you can use it with any technology framework like angular,jquery,etc.
 
+# Demo:
+http://mrspark2591.github.io/progressbar/
+
 #How to use ? 
 
 Include 
 ```html
-<script type="text/javascript" src="http://yourjavascript.com/0061456612/progressbar-v1-0.js"></script>
+<script type="text/javascript" src="http://yourjavascript.com/44026451011/progressbar.js"></script>
 ```
 or download file from js folder and put it up in your js folder and include it.(include it before all files where you want to use cool functions of this plugin!!!)
 
