@@ -34,10 +34,9 @@ appConfig : {
  none of the above fileds are mendetory if you don't update property it will take defult values from defult appConfig.
  
 ## Pattern:
- options: 1 //for stright line progress bar
-          2 //for progress bar width to be same as your percentage
-
-          for this option you have to pass your percent progress to function below
+ option: 1 //for stright line progress bar <br />
+ option: 2 //for progress bar width to be same as your percentage <br />
+for this option you have to pass your percent progress to function below
 ```javascript
 progressBar.progressBarFunctionPattern2(percentProgress);
 ```          
