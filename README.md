@@ -1,11 +1,14 @@
 # Progressbar(pure plain js !!!)
 progress bar plugin for general use pure javascript base so you can use it with any technology framework like angular,jquery,etc.
 
+# Demo:
+http://mrspark2591.github.io/progressbar/
+
 #How to use ? 
 
 Include 
 ```html
-<script type="text/javascript" src="http://yourjavascript.com/0061456612/progressbar-v1-0.js"></script>
+<script type="text/javascript" src="http://yourjavascript.com/2815668620/progressbar.js"></script>
 ```
 or download file from js folder and put it up in your js folder and include it.(include it before all files where you want to use cool functions of this plugin!!!)
 
@@ -31,13 +34,17 @@ appConfig : {
  none of the above fileds are mendetory if you don't update property it will take defult values from defult appConfig.
  
 ## Pattern:
- options: 1 //for stright line progress bar
- Currently only 1 pattern is avalible more will be added soon
+ option: 1 //for stright line progress bar <br />
+ option: 2 //for progress bar width to be same as your percentage <br />
+for this option you have to pass your percent progress to function below
+```javascript
+progressBar.progressBarFunctionPattern2(percentProgress);
+```          
 
 ## Color:
 You can pass any hex value of clour you want to use for progressbar
 
-## IntervalAnmation:
+## IntervalAnmation:(for option 1 pattern)
 Changing of width in time interval slow or fast you can configure using this property.
 
 ## Height:

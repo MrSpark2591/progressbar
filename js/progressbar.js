@@ -19,14 +19,22 @@ var progressBar = {  // Golbal configuration
             progressBar.element.style.width = "0%";
             progressBar.element.style.background = progressBar.appConfig.color;
             progressBar.element.style.height = progressBar.appConfig.height+ 'px';
-            progressBar.element.style.position = "absolute";
+            progressBar.element.style.position = "fixed";
             progressBar.element.style.left = "0px";
         },
         progressBarFunction : function() { // Progressbar function 
-            if(progressBar.appConfig.pattern === 1 && !progressBar.inprogressFlag){
-                progressBar.inprogressFlag = true;
-                progressBar.progressBarFunctionPattern1();
-            }     
+            if(!progressBar.inprogressFlag){
+            	switch(progressBar.appConfig.pattern){
+            		case 1:
+            			progressBar.inprogressFlag = true;
+                		progressBar.progressBarFunctionPattern1();
+                		break;
+                	case 2:
+                		progressBar.inprogressFlag = true;
+                		progressBar.progressBarFunctionPattern2(0);
+            	}    
+            }
+             
         },
         progressBarStart : function(){ // start function
             if(!progressBar.inprogressFlag){
@@ -61,6 +69,11 @@ var progressBar = {  // Golbal configuration
                     clearInterval(id);
                 }
             }
+        },
+        progressBarFunctionPattern2 : function(percentProgress){
+        	if(progressBar.progressBarFlag){
+        		progressBar.element.style.width = percentProgress+'%';
+        	}
         },
         fadeOut : function(){
             var op = 1;  // initial opacity
