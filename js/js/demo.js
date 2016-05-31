@@ -38,10 +38,10 @@ $('.progressbar-interval').change(function(){
 	progressBar.config(configObject);
 });
 $('.pattern').change(function(){
-	if($('.pattern').val() == 1){
+	if($('.pattern').val() == 1 || $('.pattern').val() == 3){
 		$('#pattern1').slideDown();
 		$('.pattern2').addClass('hide');
-		configObject.pattern = 1;
+		configObject.pattern = parseInt($('.pattern').val());
 		progressBar.config(configObject);
 	}
 	if($('.pattern').val() == 2){
