@@ -45,8 +45,8 @@ progressBar.progressBarFunctionPattern2(percentProgress);
 ## Color:
 You can pass any hex value of clour you want to use for progressbar
 
-## IntervalAnmation:(for option 1 pattern)
-Changing of width in time interval slow or fast you can configure using this property.
+## IntervalAnmation:
+Changing of width in time interval slow or fast you can configure using this property.(for option 1 & option 3 pattern)
 
 ## Height:
 height of progress bar depends on you to make it thin of fat...!!!(don't make it to thin that it's hard to be visible..:P)
