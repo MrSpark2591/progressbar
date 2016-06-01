@@ -28,7 +28,8 @@ appConfig : {
             color : "#FFD800", //color of progressbar
             intervalAnmation : 10, // ms interval
             height:  5,// px height
-            zIndex: 1000 // z-index if you want to adjust as per requirment  
+            zIndex: 1000, // z-index if you want to adjust as per requirment  
+            barWidth : 200
         }
 ```
  none of the above fileds are mendetory if you don't update property it will take defult values from defult appConfig.
@@ -44,8 +45,8 @@ progressBar.progressBarFunctionPattern2(percentProgress);
 ## Color:
 You can pass any hex value of clour you want to use for progressbar
 
-## IntervalAnmation:(for option 1 pattern)
-Changing of width in time interval slow or fast you can configure using this property.
+## IntervalAnmation:
+Changing of width in time interval slow or fast you can configure using this property.(for option 1 & option 3 pattern)
 
 ## Height:
 height of progress bar depends on you to make it thin of fat...!!!(don't make it to thin that it's hard to be visible..:P)
@@ -53,6 +54,8 @@ height of progress bar depends on you to make it thin of fat...!!!(don't make it
 ## Z-Index:
 Depends if you need to change it or not.
 
+## barWidth : 
+special custom width for fix width bar(pattern 3 (optional))
 
 ## How to start progress?
 simple use following when you want to start progress:
