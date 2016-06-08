@@ -21,11 +21,13 @@ $('.quick-demo-button').click(function(){
 $('.start-progress-demo-button').click(function(){
 	progressBar.progressBarStart();
 	$('.pattern').attr("disabled", "disable");
+	$('.js-stop-warning').removeClass('hide');
 });
 $('.stop-progress-demo-button').click(function(){
 	progressBar.progressBarStop();
 	quickDemoFlag = false;
 	$('.pattern').removeAttr("disabled");
+	$('.js-stop-warning').addClass('hide');
 });
 $('.progressbar-color').change(function(){
 	configObject.color = $('.progressbar-color').val();
@@ -43,18 +45,18 @@ $('.progressbar-interval').change(function(){
 	progressBar.config(configObject);
 });
 $('.progressbar-barwidth').change(function(){
-	configObject.barWidth = $('.progressbar-barwidth').val();
+	configObject.barWidth = parseInt($('.progressbar-barwidth').val());
 	progressBar.progressBarStop();
 	$('.pattern').removeAttr("disabled");
 	progressBar.config(configObject);
 });
 $('.pattern').change(function(){
-	if($('.pattern').val() == 1 || $('.pattern').val() == 3){
+	if($('.pattern').val() == 1 || $('.pattern').val() == 3 || $('.pattern').val() == 4 || $('.pattern').val() == 5){
 		$('#pattern1').slideDown();
 		$('.pattern2').addClass('hide');
 		configObject.pattern = parseInt($('.pattern').val());
 		progressBar.config(configObject);
-		if($('.pattern').val() == 3){
+		if($('.pattern').val() == 3 || $('.pattern').val() == 4){
 			$('.pattern3').removeClass('hide');
 		}else{
 			$('.pattern3').addClass('hide');
