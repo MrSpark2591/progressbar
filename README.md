@@ -40,9 +40,9 @@ for this option you have to pass your percent progress to function below
 ```javascript
 progressBar.progressBarFunctionPattern2(percentProgress);
 ```          
- option: 3 // for fix width bar progress bar
- option: 4 //recoil of pattern 3
- option: 5 //recoil of pattern 1
+ option: 3 // for fix width bar progress bar<br />
+ option: 4 //recoil of pattern 3 <br />
+ option: 5 //recoil of pattern 1 <br />
 ## Color:
 You can pass any hex value of clour you want to use for progressbar
 
@@ -71,7 +71,7 @@ simple use following when you want to stop progress:
 progressBar.progressBarStop(); 
 ```
 
-#callback Functions
+#Callback Functions:
 
 ##beforeProgressStart :
 ```javascript
