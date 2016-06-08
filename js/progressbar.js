@@ -7,46 +7,66 @@ var progressBar = {  // Golbal configuration
             zIndex: 1000,// px height 
         	barWidth : 200
         },
+        beforeProgressStart : function(){},
+        afterProgressStop : function(){},
+        addElement : function(){
+           var progressBarDiv = document.createElement("div");
+           progressBarDiv.className = "progressbar";
+           document.body.appendChild(progressBarDiv);
+        },
         config : function(configObject){
             progressBar.appConfig = Object.assign(progressBar.appConfig , configObject);
             var temp = document.getElementsByClassName("progressbar");
             progressBar.element = temp[0];
             progressBar.cssSetFunction();
         },
-        element : {},
         cssSetFunction : function(){
             progressBar.element.setAttribute("style" , "display: block;");
             progressBar.element.setAttribute("style" , "z-index:"+progressBar.appConfig.zIndex+";");
             progressBar.element.style.position = "fixed";
-            if(progressBar.appConfig.pattern == 3){
+            if(progressBar.appConfig.pattern == 3 || progressBar.appConfig.pattern == 4){
             	progressBar.element.style.width = progressBar.appConfig.barWidth + 'px';
             	progressBar.element.style.left = -progressBar.appConfig.barWidth + 'px';
             }else{
             	progressBar.element.style.width = "0%";
             	progressBar.element.style.left = "0px";
             }
+            progressBar.element.style.top = "0px";
             progressBar.element.style.background = progressBar.appConfig.color;
             progressBar.element.style.height = progressBar.appConfig.height+ 'px'; 
         },
         progressBarFunction : function() { // Progressbar function 
             if(!progressBar.inprogressFlag){
-            	switch(progressBar.appConfig.pattern){
-            		case 1:
-            			progressBar.inprogressFlag = true;
-            			progressBar.element.style.width = '0%';
-                		progressBar.progressBarFunctionPattern1();
-                		break;
-                	case 2:
-                		progressBar.inprogressFlag = true;
-                		progressBar.progressBarFunctionPattern2(0);
-                		break;
-                	case 3:
-                		progressBar.inprogressFlag = true;
-                		progressBar.progressBarFunctionPattern3();
-                		break;
-            	}    
+                progressBar.beforeProgressStart();
+                    switch(progressBar.appConfig.pattern){
+                        case 1:
+                            progressBar.inprogressFlag = true;
+                            progressBar.element.style.width = '0%';
+                            progressBar.progressBarFunctionPattern1();
+                            break;
+                        case 2:
+                            progressBar.inprogressFlag = true;
+                            progressBar.progressBarFunctionPattern2(0);
+                            break;
+                        case 3:
+                            progressBar.inprogressFlag = true;
+                            progressBar.progressBarFunctionPattern3();
+                            break;
+                        case 4:
+                            progressBar.inprogressFlag = true;
+                            progressBar.progressBarFunctionPattern4();
+                            break;
+                        case 5:
+                            progressBar.inprogressFlag = true;
+                            progressBar.progressBarFunctionPattern5();
+                            break;
+                        default :
+                            progressBar.inprogressFlag = true;
+                            progressBar.element.style.width = '0%';
+                            progressBar.progressBarFunctionPattern1();
+                            break;
+                    }       
             }
-             
         },
         progressBarStart : function(){ // start function
             if(!progressBar.inprogressFlag){
@@ -65,7 +85,8 @@ var progressBar = {  // Golbal configuration
             if(progressBar.inprogressFlag){
                 progressBar.fadeOut();
                 progressBar.progressBarFlag = false;
-                progressBar.inprogressFlag = false;   
+                progressBar.inprogressFlag = false;
+                progressBar.afterProgressStop();
             }
         },
         progressBarFunctionPattern1 : function(){
@@ -114,6 +135,55 @@ var progressBar = {  // Golbal configuration
             	}
             }
         },
+        progressBarFunctionPattern4 : function(){
+            var id = setInterval(frame, progressBar.appConfig.intervalAnmation);
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var fromLeft = -progressBar.appConfig.barWidth;
+            var toggle = false;
+            function frame() {
+                if(progressBar.progressBarFlag){
+                    if(fromLeft > progressBar.appConfig.barWidth + width && !toggle){
+                       toggle = !toggle;
+                    }else if(fromLeft < -progressBar.appConfig.barWidth && toggle){
+                        toggle = !toggle;
+                    }else{
+                        if(toggle){
+                            fromLeft -= 10;        
+                        }else{
+                            fromLeft += 10;    
+                        }
+                        progressBar.element.style.left = fromLeft + 'px';   
+                    }
+                }else{
+                    clearInterval(id);
+                }
+            }
+        },
+        progressBarFunctionPattern5 : function(){
+            var width = 0;   
+            var id = setInterval(frame, progressBar.appConfig.intervalAnmation);
+            var toggle = false;
+            function frame() {
+                if(progressBar.progressBarFlag){
+                    if (width == 100 && !toggle) {
+                        toggle = true; 
+                    }else if(width == 0 && toggle){
+                        toggle = false;
+                    }else{
+                        if(toggle){
+                            width = width - 0.5;
+                        }else{
+                            width = width + 0.5;
+                        }
+                        progressBar.element.style.width = width+'%';
+                    }
+                }else{
+                    progressBar.element.style.width = '100%';
+                    width = 0;
+                    clearInterval(id);
+                }
+            }
+        },
         fadeOut : function(){
             var op = 1;  // initial opacity
             progressBar.opecityFlag = true;
@@ -129,8 +199,10 @@ var progressBar = {  // Golbal configuration
             }
             }, 10);
         },
+        element : {},
         progressBarFlag : false,// flage for progressbar
         inprogressFlag: false,
         opecityFlag : false 
 };
+progressBar.addElement();
 progressBar.config({});

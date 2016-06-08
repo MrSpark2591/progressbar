@@ -8,19 +8,18 @@ http://mrspark2591.github.io/progressbar/
 
 Include 
 ```html
-<script type="text/javascript" src="http://yourjavascript.com/31110601345/progressbar.js"></script>
+<script type="text/javascript" src="http://yourjavascript.com/5811062636/progressbar.js"></script>
 ```
 or download file from js folder and put it up in your js folder and include it.(include it before all files where you want to use cool functions of this plugin!!!)
 
-Put in html where you want progress bar to be placed.
-```html
-<div class="progressbar"></div>
-```
-in your js file make one object for config and feed it to config to progressbar start working.(prfered when using jquery put it in start of document ready and for angular in init function and so on for other frameworks.)
+In your js file make one object for config and feed it to config to progressbar start working.(prfered when using jquery put it in start of document ready and for angular in init function and so on for other frameworks.)
 ```javascript
 progressBar.config(appConfig);
 ```
  here appConfig is your custom object !
+
+Important Note :progress bar will be directly appended to body! 
+
 #Defualt Configuration
 ```javascript
 appConfig : {
@@ -41,7 +40,9 @@ for this option you have to pass your percent progress to function below
 ```javascript
 progressBar.progressBarFunctionPattern2(percentProgress);
 ```          
- option: 3 // for fix width bar progress bar
+ option: 3 // for fix width bar progress bar<br />
+ option: 4 //recoil of pattern 3 <br />
+ option: 5 //recoil of pattern 1 <br />
 ## Color:
 You can pass any hex value of clour you want to use for progressbar
 
@@ -55,7 +56,7 @@ height of progress bar depends on you to make it thin of fat...!!!(don't make it
 Depends if you need to change it or not.
 
 ## barWidth : 
-special custom width for fix width bar(pattern 3 (optional))
+special custom width for fix width bar(pattern 3 & 4 (optional))
 
 ## How to start progress?
 simple use following when you want to start progress:
@@ -70,6 +71,23 @@ simple use following when you want to stop progress:
 progressBar.progressBarStop(); 
 ```
 
+#Callback Functions:
+
+##beforeProgressStart :
+```javascript
+progressBar.beforeProgressStart = function(){
+    //your Custom Function code
+}
+``` 
+if you want to do something before progress starts.
+
+##afterProgressStop :
+```javascript
+progressBar.afterProgressStop = function(){
+    //your Custom Function code
+}
+``` 
+if you want to do something after progress is stoped.
 
 # Special for jquery lovers and wants to show ajax progress by this plugin
 ```javascript
