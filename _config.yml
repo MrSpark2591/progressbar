@@ -1,0 +1,8 @@
+title: Progressbar
+description: progress bar plugin for general use(jquery,ajaxproogress,fileupload,angularjs,etc)
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
